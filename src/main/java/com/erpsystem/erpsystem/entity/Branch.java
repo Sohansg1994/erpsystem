@@ -19,8 +19,9 @@ public class Branch {
     @Column(name = "branch_name",nullable = false)
     private String branchName;
 
+
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "contact_detail_id",referencedColumnName = "branch_code")
+    @JoinColumn(name = "contact_detail_id", referencedColumnName = "contact_detail_id")
     private Address address;
 
 

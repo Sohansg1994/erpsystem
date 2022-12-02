@@ -1,5 +1,6 @@
 package com.erpsystem.erpsystem.entity;
 
+import com.erpsystem.erpsystem.entity.Contact.Address;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,9 +18,6 @@ public class Warehouse {
     @Column(name = "warehouse_name",nullable = false)
     private String warehouseName;
 
-    @Column(name = "contact_details_Id",nullable = false)
-    private int contactDetailsId;
-
     @Column(name = "capacity",nullable = false)
     private double capacity;
 
@@ -28,9 +26,14 @@ public class Warehouse {
     @JoinColumn(name="branch_code")
     private Branch branch;
 
-    public Warehouse(String warehouseName, int contactDetailsId, double capacity) {
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "contact_detail_id",referencedColumnName ="contact_detail_id" )
+    private Address address;
+
+
+
+    public Warehouse(String warehouseName, double capacity) {
         this.warehouseName = warehouseName;
-        this.contactDetailsId = contactDetailsId;
         this.capacity = capacity;
     }
 
@@ -42,14 +45,6 @@ public class Warehouse {
 
     public void setWarehouseName(String warehouseName) {
         this.warehouseName = warehouseName;
-    }
-
-    public int getContactDetailsId() {
-        return contactDetailsId;
-    }
-
-    public void setContactDetailsId(int contactDetailsId) {
-        this.contactDetailsId = contactDetailsId;
     }
 
     public double getCapacity() {
@@ -66,5 +61,13 @@ public class Warehouse {
 
     public void setBranch(Branch branch) {
         this.branch = branch;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
