@@ -9,8 +9,8 @@ import java.io.Serializable;
 @Inheritance(strategy =InheritanceType.TABLE_PER_CLASS)
 public class ContactDetails implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="contact_detail_id", nullable = false)
     private int ContactDetailId;
 
     @Column(nullable = false)

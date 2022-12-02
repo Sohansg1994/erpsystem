@@ -1,5 +1,6 @@
 package com.erpsystem.erpsystem.entity.Contact;
 
+import com.erpsystem.erpsystem.entity.Branch;
 import jakarta.persistence.*;
 
 @Entity
@@ -21,6 +22,9 @@ public class Address extends ContactDetails{
 
     @Column(nullable = false)
     private String zipCode;
+
+    @OneToOne(mappedBy = "address")
+    private Branch branch;
 
     public Address(String mobileNo, String telephoneNo, String email, String faxNo, String houseNo, String streetName,
                    String city, String state, String zipCode) {
@@ -74,5 +78,13 @@ public class Address extends ContactDetails{
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
+    }
+
+    public Branch getBranch() {
+        return branch;
+    }
+
+    public void setBranch(Branch branch) {
+        this.branch = branch;
     }
 }

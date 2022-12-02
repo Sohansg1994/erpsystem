@@ -12,5 +12,5 @@ import java.util.Set;
 @AllArgsConstructor
 public class BranchDTO {
     private String branchName;
-   
+
 }

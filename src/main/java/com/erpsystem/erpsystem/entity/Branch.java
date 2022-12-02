@@ -1,5 +1,6 @@
 package com.erpsystem.erpsystem.entity;
 
+import com.erpsystem.erpsystem.entity.Contact.Address;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,8 +19,10 @@ public class Branch {
     @Column(name = "branch_name",nullable = false)
     private String branchName;
 
-    @Column(name = "contact_details_Id",nullable = false)
-    private int contactDetailsId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "contact_detail_id",referencedColumnName = "branch_code")
+    private Address address;
+
 
   @OneToMany(mappedBy = "branch",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
   private Set<Warehouse> warehouseSet;
@@ -27,7 +30,7 @@ public class Branch {
 
     public Branch(String branchName, int contactDetailsId) {
         this.branchName = branchName;
-        this.contactDetailsId = contactDetailsId;
+
 
     }
     public Branch(){}
@@ -48,13 +51,6 @@ public class Branch {
         this.branchName = branchName;
     }
 
-    public int getContactDetailsId() {
-        return contactDetailsId;
-    }
-
-    public void setContactDetailsId(int contactDetailsId) {
-        this.contactDetailsId = contactDetailsId;
-    }
 
     public Set<Warehouse> getWarehouseSet() {
         return warehouseSet;
@@ -62,5 +58,13 @@ public class Branch {
 
     public void setWarehouseSet(Set<Warehouse> warehouseSet) {
         this.warehouseSet = warehouseSet;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

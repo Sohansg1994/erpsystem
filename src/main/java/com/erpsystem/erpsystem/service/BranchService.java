@@ -24,6 +24,7 @@ public class BranchService {
         branchRepository.save(map);
         responseDTO =new ResponseDTO("Branch Successfully added",null);
         return responseDTO;
+
     }
 
 
