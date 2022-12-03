@@ -1,19 +1,11 @@
 package com.erpsystem.erpsystem.entity;
-
-import com.erpsystem.erpsystem.entity.Contact.Address;
+import com.erpsystem.erpsystem.entity.Contact.ContactDetails;
+import com.erpsystem.erpsystem.entity.Contact.ContactEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 
 @Table(name="Warehouse")
 @Entity
-public class Warehouse {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "warehouse_code",nullable = false)
-    private int warehouseCode;
+public class Warehouse extends ContactEntity {
 
     @Column(name = "warehouse_name",nullable = false)
     private String warehouseName;
@@ -23,13 +15,11 @@ public class Warehouse {
 
 
     @ManyToOne
-    @JoinColumn(name="branch_code")
     private Branch branch;
 
 
-
-
-    public Warehouse(String warehouseName, double capacity) {
+    public Warehouse(ContactDetails contactDetails, String warehouseName, double capacity) {
+        super(contactDetails);
         this.warehouseName = warehouseName;
         this.capacity = capacity;
     }

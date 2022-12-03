@@ -27,6 +27,11 @@ public class ContactDetails {
     @OneToOne(mappedBy = "contactDetails")
     private ContactEntity contactEntity;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "contact_detail_id", referencedColumnName = "address_id")
+    private Address address;
+
+
 
 
     public ContactDetails(String mobileNo, String telephoneNo, String email, String faxNo) {
@@ -84,5 +89,11 @@ public class ContactDetails {
         this.contactEntity = contactEntity;
     }
 
+    public Address getAddress() {
+        return address;
+    }
 
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 }

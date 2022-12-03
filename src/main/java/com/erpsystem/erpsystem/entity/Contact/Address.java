@@ -26,7 +26,8 @@ public class Address {
     @Column(nullable = false)
     private String zipCode;
 
-
+    @OneToOne(mappedBy = "address")
+    private ContactDetails contactDetails;
 
 
 
@@ -78,13 +79,20 @@ public class Address {
         this.zipCode = zipCode;
     }
 
-
-
     public int getAddressId() {
         return addressId;
     }
 
     public void setAddressId(int addressId) {
         this.addressId = addressId;
+    }
+
+
+    public ContactDetails getContactDetails() {
+        return contactDetails;
+    }
+
+    public void setContactDetails(ContactDetails contactDetails) {
+        this.contactDetails = contactDetails;
     }
 }

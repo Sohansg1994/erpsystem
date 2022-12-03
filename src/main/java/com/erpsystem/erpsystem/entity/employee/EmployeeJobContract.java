@@ -1,6 +1,9 @@
 package com.erpsystem.erpsystem.entity.employee;
 
+import com.erpsystem.erpsystem.entity.Branch;
 import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 @Table(name="employeeJobContract")
@@ -9,12 +12,6 @@ public class EmployeeJobContract {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private int contractNum;
-
-    @Column(nullable = false)
-    private int branchCode;
-
-    @Column(nullable = false)
-    private int empId;
 
     @Column(nullable = false)
     private String timePeriod;
@@ -28,10 +25,16 @@ public class EmployeeJobContract {
     @Column(nullable = false)
     private double OTHourRate;
 
+    @ManyToOne
+    private Employee employee;
 
-    public EmployeeJobContract(int branchCode, int empId, String timePeriod, double basicSalary, double fixedAllowances, double OTHourRate) {
-        this.branchCode = branchCode;
-        this.empId = empId;
+    @ManyToOne
+    private Branch branch;
+
+    @OneToMany(mappedBy = "employeeJobContract",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    private Set<JobContractPayment> jobContractPaymentSet;
+
+    public EmployeeJobContract(String timePeriod, double basicSalary, double fixedAllowances, double OTHourRate) {
         this.timePeriod = timePeriod;
         this.basicSalary = basicSalary;
         this.fixedAllowances = fixedAllowances;
@@ -39,23 +42,10 @@ public class EmployeeJobContract {
     }
 
 
-    public EmployeeJobContract(){}
-
-    public int getBranchCode() {
-        return branchCode;
+    public int getContractNum() {
+        return contractNum;
     }
 
-    public void setBranchCode(int branchCode) {
-        this.branchCode = branchCode;
-    }
-
-    public int getEmpId() {
-        return empId;
-    }
-
-    public void setEmpId(int empId) {
-        this.empId = empId;
-    }
 
     public String getTimePeriod() {
         return timePeriod;
@@ -88,4 +78,23 @@ public class EmployeeJobContract {
     public void setOTHourRate(double OTHourRate) {
         this.OTHourRate = OTHourRate;
     }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public Branch getBranch() {
+        return branch;
+    }
+
+    public void setBranch(Branch branch) {
+        this.branch = branch;
+    }
+
+
+
 }

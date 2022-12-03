@@ -16,11 +16,11 @@ public class ContactEntity implements Serializable {
     @JoinColumn(name = "id", referencedColumnName = "contact_detail_id")
     private ContactDetails contactDetails;
 
+    public ContactEntity(ContactDetails contactDetails) {
+        this.contactDetails = contactDetails;
+    }
+
     public ContactEntity(){}
-
-
-
-
 
 
     public int getId() {
