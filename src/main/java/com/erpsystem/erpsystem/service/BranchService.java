@@ -17,17 +17,5 @@ public class BranchService {
 
 
 
-    public ResponseDTO saveBranch(BranchDTO branchDTO){
-        System.out.println("Here");
-        ResponseDTO responseDTO;
-        Branch branch=new Branch();
-        branch.setBranchName(branchDTO.getBranchName());
-        branch.setAddress(branchDTO.getAddress());
-        branchRepository.save(branch);
-        responseDTO=new ResponseDTO("Branch successfully added",null);
-        return responseDTO;
-
-    }
-
 
 }

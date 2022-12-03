@@ -12,5 +12,4 @@ public class WarehouseDTO {
     private int branchCode;
     private String warehouseName;
     private double capacity;
-    private Address address;
 }

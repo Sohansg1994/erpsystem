@@ -26,9 +26,6 @@ public class Warehouse {
     @JoinColumn(name="branch_code")
     private Branch branch;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "contact_detail_id",referencedColumnName ="contact_detail_id" )
-    private Address address;
 
 
 
@@ -63,11 +60,5 @@ public class Warehouse {
         this.branch = branch;
     }
 
-    public Address getAddress() {
-        return address;
-    }
 
-    public void setAddress(Address address) {
-        this.address = address;
-    }
 }

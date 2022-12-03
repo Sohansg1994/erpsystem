@@ -1,12 +1,14 @@
 package com.erpsystem.erpsystem.entity.Contact;
 
-import com.erpsystem.erpsystem.entity.Branch;
-import com.erpsystem.erpsystem.entity.Warehouse;
+
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "address")
-public class Address extends ContactDetails{
+public class Address {
+    @Id
+    @Column(name="address_id")
+    private int addressId;
 
 
     @Column(nullable = false)
@@ -24,24 +26,16 @@ public class Address extends ContactDetails{
     @Column(nullable = false)
     private String zipCode;
 
-    @OneToOne(mappedBy = "address")
-    private Branch branch;
 
-    @OneToOne(mappedBy = "address")
-    private Warehouse warehouse;
 
-    public Address(String mobileNo, String telephoneNo, String email, String faxNo, String houseNo, String streetName,
-                   String city, String state, String zipCode) {
-        super(mobileNo, telephoneNo, email, faxNo);
+
+
+    public Address(String houseNo, String streetName, String city, String state, String zipCode) {
         this.houseNo = houseNo;
         this.streetName = streetName;
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
-    }
-
-    public Address(){
-        super();
     }
 
     public String getHouseNo() {
@@ -84,19 +78,13 @@ public class Address extends ContactDetails{
         this.zipCode = zipCode;
     }
 
-    public Branch getBranch() {
-        return branch;
+
+
+    public int getAddressId() {
+        return addressId;
     }
 
-    public void setBranch(Branch branch) {
-        this.branch = branch;
-    }
-
-    public Warehouse getWarehouse() {
-        return warehouse;
-    }
-
-    public void setWarehouse(Warehouse warehouse) {
-        this.warehouse = warehouse;
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
     }
 }

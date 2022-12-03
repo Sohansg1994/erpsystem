@@ -6,11 +6,10 @@ import java.io.Serializable;
 
 @Entity
 @Table(name="contactDetails")
-@Inheritance(strategy =InheritanceType.TABLE_PER_CLASS)
-public class ContactDetails implements Serializable {
+public class ContactDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="contact_detail_id", nullable = false)
+    @Column(name = "contact_detail_id")
     private int ContactDetailId;
 
     @Column(nullable = false)
@@ -25,6 +24,11 @@ public class ContactDetails implements Serializable {
     @Column(nullable = false)
     private String faxNo;
 
+    @OneToOne(mappedBy = "contactDetails")
+    private ContactEntity contactEntity;
+
+
+
     public ContactDetails(String mobileNo, String telephoneNo, String email, String faxNo) {
         this.mobileNo = mobileNo;
         this.telephoneNo = telephoneNo;
@@ -32,11 +36,13 @@ public class ContactDetails implements Serializable {
         this.faxNo = faxNo;
     }
 
-
-    public ContactDetails(){
-        super();
+    public int getContactDetailId() {
+        return ContactDetailId;
     }
 
+    public void setContactDetailId(int contactDetailId) {
+        ContactDetailId = contactDetailId;
+    }
 
     public String getMobileNo() {
         return mobileNo;
@@ -69,4 +75,14 @@ public class ContactDetails implements Serializable {
     public void setFaxNo(String faxNo) {
         this.faxNo = faxNo;
     }
+
+    public ContactEntity getContactEntity() {
+        return contactEntity;
+    }
+
+    public void setContactEntity(ContactEntity contactEntity) {
+        this.contactEntity = contactEntity;
+    }
+
+
 }

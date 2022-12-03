@@ -16,7 +16,7 @@ public class WarehouseController {
     @Autowired
     WarehouseService warehouseService;
 
-    @PostMapping("/")
+  /*  @PostMapping("/")
     public ResponseEntity saveWarehouse(@RequestBody WarehouseDTO warehouseDTO){
             ResponseDTO responseDTO;
         try {
@@ -27,6 +27,6 @@ public class WarehouseController {
             responseDTO=new ResponseDTO("Error",null);
             return new ResponseEntity(responseDTO,HttpStatus.NOT_ACCEPTABLE);
         }
-    }
+    }*/
 
 }

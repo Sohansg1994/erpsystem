@@ -21,21 +21,9 @@ public class WarehouseService {
     @Autowired
     BranchRepository branchRepository;
 
-    @Autowired
-    ModelMapper modelMapper;
 
-    public ResponseDTO saveWarehouse(WarehouseDTO warehouseDTO) throws Exception{
-        ResponseDTO responseDTO;
-        Warehouse warehouse=new Warehouse();
-        warehouse.setBranch(branchRepository.getReferenceById(warehouseDTO.getBranchCode()));
-        warehouse.setWarehouseName(warehouseDTO.getWarehouseName());
-        warehouse.setCapacity(warehouseDTO.getCapacity());
-        warehouse.setAddress(warehouseDTO.getAddress());
-        warehouseRepository.save(warehouse);
-        responseDTO =new ResponseDTO("Warehouse Successfully added",null);
-        return responseDTO;
 
-    }
+
 
 
 
