@@ -18,9 +18,15 @@ public class WarehouseController {
 
     @PostMapping("/")
     public ResponseEntity saveWarehouse(@RequestBody WarehouseDTO warehouseDTO){
-        ResponseDTO responseDTO;
-        responseDTO=warehouseService.saveWarehouse(warehouseDTO);
-        return new ResponseEntity(responseDTO, HttpStatus.ACCEPTED);
+            ResponseDTO responseDTO;
+        try {
+            responseDTO = warehouseService.saveWarehouse(warehouseDTO);
+            return new ResponseEntity(responseDTO, HttpStatus.ACCEPTED);
+
+        }catch(Exception e){
+            responseDTO=new ResponseDTO("Error",null);
+            return new ResponseEntity(responseDTO,HttpStatus.NOT_ACCEPTABLE);
+        }
     }
 
 }

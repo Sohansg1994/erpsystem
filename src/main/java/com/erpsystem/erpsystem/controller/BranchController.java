@@ -19,9 +19,13 @@ public class BranchController {
     @PostMapping("/")
     public ResponseEntity saveBranch(@RequestBody BranchDTO branchDTO){
         ResponseDTO responseDTO;
-        responseDTO=branchService.saveBranch(branchDTO);
-        return new ResponseEntity(responseDTO, HttpStatus.ACCEPTED);
-
+        try {
+            responseDTO = branchService.saveBranch(branchDTO);
+            return new ResponseEntity(responseDTO, HttpStatus.ACCEPTED);
+        }catch (Exception e){
+            responseDTO=new ResponseDTO("Error",null);
+            return new ResponseEntity(responseDTO,HttpStatus.NOT_ACCEPTABLE);
+        }
     }
 
 
