@@ -16,17 +16,17 @@ public class WarehouseController {
     @Autowired
     WarehouseService warehouseService;
 
-  /*  @PostMapping("/")
+  @PostMapping("/")
     public ResponseEntity saveWarehouse(@RequestBody WarehouseDTO warehouseDTO){
             ResponseDTO responseDTO;
         try {
-            responseDTO = warehouseService.saveWarehouse(warehouseDTO);
+            responseDTO = warehouseService.addWarehouse(warehouseDTO);
             return new ResponseEntity(responseDTO, HttpStatus.ACCEPTED);
 
         }catch(Exception e){
             responseDTO=new ResponseDTO("Error",null);
             return new ResponseEntity(responseDTO,HttpStatus.NOT_ACCEPTABLE);
         }
-    }*/
+    }
 
 }

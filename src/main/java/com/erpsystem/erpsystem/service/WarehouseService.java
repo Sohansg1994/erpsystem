@@ -8,7 +8,6 @@ import com.erpsystem.erpsystem.entity.Warehouse;
 import com.erpsystem.erpsystem.repo.BranchRepository;
 import com.erpsystem.erpsystem.repo.WarehouseRepository;
 import jakarta.transaction.Transactional;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +19,15 @@ public class WarehouseService {
 
     @Autowired
     BranchRepository branchRepository;
+
+    public ResponseDTO addWarehouse(WarehouseDTO warehouseDTO){
+        ResponseDTO responseDTO;
+        Warehouse warehouse=new Warehouse(warehouseDTO);
+        warehouse.setBranch(branchRepository.getReferenceById(warehouseDTO.getBranchCode()));
+        warehouseRepository.save(warehouse);
+        return responseDTO=new ResponseDTO("Warehouse added Successfully",null);
+
+    }
 
 
 

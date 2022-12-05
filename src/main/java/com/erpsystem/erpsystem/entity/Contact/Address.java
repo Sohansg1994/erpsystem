@@ -8,8 +8,8 @@ import jakarta.persistence.*;
 public class Address {
     @Id
     @Column(name="address_id")
+    @GeneratedValue()
     private int addressId;
-
 
     @Column(nullable = false)
     private String houseNo;
@@ -38,6 +38,8 @@ public class Address {
         this.state = state;
         this.zipCode = zipCode;
     }
+
+    public Address(){}
 
     public String getHouseNo() {
         return houseNo;

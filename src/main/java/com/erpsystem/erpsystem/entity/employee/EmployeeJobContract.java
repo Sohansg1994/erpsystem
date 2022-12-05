@@ -1,5 +1,6 @@
 package com.erpsystem.erpsystem.entity.employee;
 
+import com.erpsystem.erpsystem.dto.JobContractDTO;
 import com.erpsystem.erpsystem.entity.Branch;
 import jakarta.persistence.*;
 
@@ -25,6 +26,9 @@ public class EmployeeJobContract {
     @Column(nullable = false)
     private double OTHourRate;
 
+    @Column(nullable = false)
+    private double epfDeduction;
+
     @ManyToOne
     private Employee employee;
 
@@ -34,12 +38,15 @@ public class EmployeeJobContract {
     @OneToMany(mappedBy = "employeeJobContract",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private Set<JobContractPayment> jobContractPaymentSet;
 
-    public EmployeeJobContract(String timePeriod, double basicSalary, double fixedAllowances, double OTHourRate) {
-        this.timePeriod = timePeriod;
-        this.basicSalary = basicSalary;
-        this.fixedAllowances = fixedAllowances;
-        this.OTHourRate = OTHourRate;
+    public EmployeeJobContract(JobContractDTO jobContractDTO) {
+        this.timePeriod = jobContractDTO.getTimePeriod();
+        this.basicSalary = jobContractDTO.getBasicSalary();
+        this.fixedAllowances = jobContractDTO.getFixedAllowances();
+        this.OTHourRate=(jobContractDTO.getBasicSalary()/25/8*1.5);//calculate and assign OT Hour rate
+        this.epfDeduction=(jobContractDTO.getBasicSalary()*0.08);
     }
+
+    public EmployeeJobContract(){}
 
 
     public int getContractNum() {
@@ -96,5 +103,7 @@ public class EmployeeJobContract {
     }
 
 
-
+    public double getEpfDeduction() {
+        return epfDeduction;
+    }
 }

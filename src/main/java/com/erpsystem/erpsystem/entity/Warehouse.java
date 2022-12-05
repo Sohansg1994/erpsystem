@@ -1,4 +1,5 @@
 package com.erpsystem.erpsystem.entity;
+import com.erpsystem.erpsystem.dto.WarehouseDTO;
 import com.erpsystem.erpsystem.entity.Contact.ContactDetails;
 import com.erpsystem.erpsystem.entity.Contact.ContactEntity;
 import jakarta.persistence.*;
@@ -18,10 +19,10 @@ public class Warehouse extends ContactEntity {
     private Branch branch;
 
 
-    public Warehouse(ContactDetails contactDetails, String warehouseName, double capacity) {
-        super(contactDetails);
-        this.warehouseName = warehouseName;
-        this.capacity = capacity;
+    public Warehouse(WarehouseDTO warehouseDTO) {
+        super(warehouseDTO.getContactDetails());
+        this.warehouseName = warehouseDTO.getWarehouseName();
+        this.capacity = warehouseDTO.getCapacity();
     }
 
     public Warehouse(){}

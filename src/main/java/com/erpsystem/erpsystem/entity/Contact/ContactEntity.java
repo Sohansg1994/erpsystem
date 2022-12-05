@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class ContactEntity implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -20,7 +20,7 @@ public class ContactEntity implements Serializable {
         this.contactDetails = contactDetails;
     }
 
-    public ContactEntity(){}
+     protected ContactEntity(){}
 
 
     public int getId() {

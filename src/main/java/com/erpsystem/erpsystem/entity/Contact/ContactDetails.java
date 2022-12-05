@@ -1,14 +1,16 @@
 package com.erpsystem.erpsystem.entity.Contact;
 
 import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
 @Entity
 @Table(name="contactDetails")
+
 public class ContactDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "contact_detail_id")
     private int ContactDetailId;
 
@@ -40,6 +42,8 @@ public class ContactDetails {
         this.email = email;
         this.faxNo = faxNo;
     }
+
+    public ContactDetails(){}
 
     public int getContactDetailId() {
         return ContactDetailId;

@@ -1,6 +1,7 @@
 package com.erpsystem.erpsystem.entity;
 
 
+import com.erpsystem.erpsystem.dto.BranchDTO;
 import com.erpsystem.erpsystem.entity.Contact.ContactDetails;
 import com.erpsystem.erpsystem.entity.Contact.ContactEntity;
 import com.erpsystem.erpsystem.entity.employee.EmployeeJobContract;
@@ -23,14 +24,13 @@ public class Branch extends ContactEntity{
   @OneToMany(mappedBy ="branch",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
   private Set<EmployeeJobContract> employeeJobContractSet;
 
-    public Branch(ContactDetails contactDetails, String branchName) {
-        super(contactDetails);
-        this.branchName = branchName;
+    public Branch(BranchDTO branchDTO) {
+        super(branchDTO.getContactDetails());
+        this.branchName = branchDTO.getBranchName();
+        this.warehouseSet=branchDTO.getWarehouseSet();
     }
 
-    public Branch(String branchName) {
-        this.branchName = branchName;
-    }
+    public Branch(){}
 
 
     public String getBranchName() {

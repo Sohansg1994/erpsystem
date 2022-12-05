@@ -1,10 +1,12 @@
 package com.erpsystem.erpsystem.entity.employee;
 
 
+import com.erpsystem.erpsystem.dto.EmployeeDTO;
 import com.erpsystem.erpsystem.entity.Contact.ContactDetails;
 import com.erpsystem.erpsystem.entity.Contact.ContactEntity;
 import jakarta.persistence.*;
 
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -15,7 +17,7 @@ public class Employee extends ContactEntity {
     private String name;
 
     @Column(nullable = false)
-    private String NIC;
+    private String nic;
 
     @Column(nullable = false)
     private String designation;
@@ -23,12 +25,14 @@ public class Employee extends ContactEntity {
     @OneToMany(mappedBy = "employee",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private Set<EmployeeJobContract> employeeJobContractSet;
 
-    public Employee(ContactDetails contactDetails, String name, String NIC, String designation) {
-        super(contactDetails);
-        this.name = name;
-        this.NIC = NIC;
-        this.designation = designation;
+    public Employee(EmployeeDTO employeeDTO) {
+        super(employeeDTO.getContactDetails());
+        this.name = employeeDTO.getName();
+        this.nic = employeeDTO.getNic();
+        this.designation = employeeDTO.getDesignation();
     }
+
+    public Employee(){}
 
 
     public String getName() {
@@ -39,12 +43,12 @@ public class Employee extends ContactEntity {
         this.name = name;
     }
 
-    public String getNIC() {
-        return NIC;
+    public String getNic() {
+        return nic;
     }
 
-    public void setNIC(String NIC) {
-        this.NIC = NIC;
+    public void setNic(String nic) {
+        this.nic = nic;
     }
 
     public String getDesignation() {

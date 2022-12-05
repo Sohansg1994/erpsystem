@@ -16,9 +16,10 @@ public class OT {
     private double overTimeHours;
     private double otAmount;
 
+
     public OT(double overTimeHours, double otAmount) {
         this.overTimeHours = overTimeHours;
-        this.otAmount = otAmount;
+        this.otAmount=otAmount;
     }
 
     public JobContractPayment getJobContractPayment() {

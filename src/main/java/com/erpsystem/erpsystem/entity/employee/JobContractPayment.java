@@ -1,54 +1,51 @@
 package com.erpsystem.erpsystem.entity.employee;
 
+import com.erpsystem.erpsystem.dto.JobContractPaymentDTO;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "jobContractPayment")
 public class JobContractPayment {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "payment_id")
     private int paymentId;
-
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String paymentMonth;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private double grossPay;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private double panelty;
 
-    @Column(nullable = false)
-    private double epf;
-
-    @Column(nullable = false)
+    @Column(nullable = true)
     private double netPay;
+
+    @Column(nullable = true)
+    private double otAmount;
 
 
     @ManyToOne
     @JoinColumn(name="contract_num", nullable=false)
     private EmployeeJobContract employeeJobContract;
 
-    @OneToOne(mappedBy = "jobContractPayment", cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
-    private OT ot;
+   // @OneToOne(mappedBy = "jobContractPayment", cascade = CascadeType.ALL)
+   // @PrimaryKeyJoinColumn
+   // private OT ot;
 
 
+    public JobContractPayment(JobContractPaymentDTO jobContractPaymentDTO) {
+        this.paymentMonth = jobContractPaymentDTO.getPaymentMonth();
+        this.panelty =jobContractPaymentDTO.getPanelty();
 
-
-
-    public JobContractPayment( String paymentMonth, double grossPay, double panelty, double epf, double netPay) {
-        this.paymentMonth = paymentMonth;
-        this.grossPay = grossPay;
-        this.panelty = panelty;
-        this.epf = epf;
-        this.netPay = netPay;
     }
+    public JobContractPayment(){}
 
     public int getPaymentId() {
         return paymentId;
     }
-    
+
     public String getPaymentMonth() {
         return paymentMonth;
     }
@@ -73,13 +70,7 @@ public class JobContractPayment {
         this.panelty = panelty;
     }
 
-    public double getEpf() {
-        return epf;
-    }
 
-    public void setEpf(double epf) {
-        this.epf = epf;
-    }
 
     public double getNetPay() {
         return netPay;
@@ -97,13 +88,19 @@ public class JobContractPayment {
         this.employeeJobContract = employeeJobContract;
     }
 
-    public OT getOt() {
+   /* public OT getOt() {
         return ot;
     }
 
     public void setOt(OT ot) {
         this.ot = ot;
+    }*/
+
+    public double getOtAmount() {
+        return otAmount;
     }
 
-
+    public void setOtAmount(double otAmount) {
+        this.otAmount = otAmount;
+    }
 }
