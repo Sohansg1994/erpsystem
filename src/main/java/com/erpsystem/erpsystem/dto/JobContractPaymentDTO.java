@@ -1,6 +1,8 @@
 package com.erpsystem.erpsystem.dto;
 
-public class JobContractPaymentDTO {
+import com.fasterxml.jackson.databind.ser.Serializers;
+
+public class JobContractPaymentDTO extends BaseDTO {
 
     private int contractNum;
 
@@ -47,5 +49,14 @@ public class JobContractPaymentDTO {
 
     public void setPanelty(double panelty) {
         this.panelty = panelty;
+    }
+
+    @Override
+    public boolean isRequiredAvailable() {
+        boolean isAllItemsAvailable = ((contractNum > 0) && (paymentMonth != null && !paymentMonth.isEmpty()) &&
+                (overTimeHours > 0) && (panelty > 0));
+
+        return isAllItemsAvailable;
+
     }
 }

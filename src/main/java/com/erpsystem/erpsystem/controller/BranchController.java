@@ -19,6 +19,12 @@ public class BranchController {
     @PostMapping("/")
     public ResponseEntity saveBranch(@RequestBody BranchDTO branchDTO){
         ResponseDTO responseDTO;
+        if(!branchDTO.isRequiredAvailable()){
+            responseDTO=new ResponseDTO("Invalid Input",null);
+            return new ResponseEntity(responseDTO,HttpStatus.BAD_REQUEST);
+
+        }
+
         try {
             responseDTO = branchService.addBranch(branchDTO);
             return new ResponseEntity(responseDTO, HttpStatus.ACCEPTED);

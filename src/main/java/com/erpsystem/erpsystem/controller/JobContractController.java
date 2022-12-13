@@ -18,6 +18,11 @@ public class JobContractController {
     @PostMapping("/")
     public ResponseEntity addJobContract(@RequestBody JobContractDTO jobContractDTO){
         ResponseDTO responseDTO;
+        if(!jobContractDTO.isRequiredAvailable()){
+            responseDTO=new ResponseDTO("Invalid Input",null);
+            return new ResponseEntity(responseDTO,HttpStatus.BAD_REQUEST);
+
+        }
         try {
             responseDTO=jobContractService.addJobContract(jobContractDTO);
             return new ResponseEntity(responseDTO, HttpStatus.ACCEPTED);

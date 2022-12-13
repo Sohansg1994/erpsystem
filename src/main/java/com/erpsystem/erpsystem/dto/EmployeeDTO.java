@@ -2,7 +2,7 @@ package com.erpsystem.erpsystem.dto;
 
 import com.erpsystem.erpsystem.entity.Contact.ContactDetails;
 
-public class EmployeeDTO {
+public class EmployeeDTO extends BaseDTO{
     private String name;
     private String nic;
     private String designation;
@@ -48,4 +48,14 @@ public class EmployeeDTO {
     public void setContactDetails(ContactDetails contactDetails) {
         this.contactDetails = contactDetails;
     }
+
+    @Override
+    public boolean isRequiredAvailable() {
+        boolean isAllItemsAvailable= ((name !=null && !name.isEmpty())&& (nic !=null && !nic.isEmpty())&&
+                (designation !=null && !designation.isEmpty())&&(contactDetails !=null ) );
+
+        return isAllItemsAvailable;
+    }
 }
+
+

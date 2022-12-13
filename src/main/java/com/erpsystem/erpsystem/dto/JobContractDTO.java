@@ -1,6 +1,6 @@
 package com.erpsystem.erpsystem.dto;
 
-public class JobContractDTO {
+public class JobContractDTO extends BaseDTO{
     private int branchCode;
     private int empId;
     private String timePeriod;
@@ -57,4 +57,14 @@ public class JobContractDTO {
 
 
     }
+
+    @Override
+    public boolean isRequiredAvailable() {
+        boolean isAllItemsAvailable= ((branchCode>0)&& (empId>0) && (timePeriod !=null && !timePeriod.isEmpty())
+                && (basicSalary>0));
+
+        return isAllItemsAvailable;
+
+    }
+
 }

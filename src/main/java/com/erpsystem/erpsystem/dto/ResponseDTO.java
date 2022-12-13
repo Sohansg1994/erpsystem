@@ -9,7 +9,16 @@ import org.springframework.stereotype.Component;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResponseDTO {
+public class ResponseDTO extends BaseDTO{
     private String massage ;
     private Object content;
+
+    @Override
+    public boolean isRequiredAvailable() {
+        return true;
+    }
 }
+
+
+
+

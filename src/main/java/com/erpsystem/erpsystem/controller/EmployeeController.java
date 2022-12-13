@@ -19,6 +19,11 @@ public class EmployeeController {
     @PostMapping("/")
     public ResponseEntity addEmployee(@RequestBody EmployeeDTO employeeDTO){
         ResponseDTO responseDTO;
+        if(!employeeDTO.isRequiredAvailable()){
+            responseDTO=new ResponseDTO("Invalid Input",null);
+            return new ResponseEntity(responseDTO,HttpStatus.BAD_REQUEST);
+
+        }
         try {
             responseDTO=employeeService.addEmployee(employeeDTO);
             return new ResponseEntity(responseDTO, HttpStatus.ACCEPTED);

@@ -19,6 +19,11 @@ public class WarehouseController {
   @PostMapping("/")
     public ResponseEntity saveWarehouse(@RequestBody WarehouseDTO warehouseDTO){
             ResponseDTO responseDTO;
+      if(!warehouseDTO.isRequiredAvailable()){
+          responseDTO=new ResponseDTO("Invalid Input",null);
+          return new ResponseEntity(responseDTO,HttpStatus.BAD_REQUEST);
+
+      }
         try {
             responseDTO = warehouseService.addWarehouse(warehouseDTO);
             return new ResponseEntity(responseDTO, HttpStatus.ACCEPTED);

@@ -7,7 +7,7 @@ import com.erpsystem.erpsystem.entity.Warehouse;
 import java.util.Set;
 
 
-public class BranchDTO {
+public class BranchDTO extends BaseDTO{
     private String branchName;
     private ContactDetails contactDetails;
 
@@ -45,4 +45,13 @@ public class BranchDTO {
     public void setWarehouseSet(Set<Warehouse> warehouseSet) {
         this.warehouseSet = warehouseSet;
     }
+
+    @Override
+    public boolean isRequiredAvailable() {
+        boolean isAllItemsAvailable= ((branchName !=null && !branchName.isEmpty())&& (contactDetails !=null ));
+
+        return isAllItemsAvailable;
+
+    }
 }
+
