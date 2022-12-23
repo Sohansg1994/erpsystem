@@ -6,16 +6,15 @@ public class EmployeeDTO extends BaseDTO{
     private String name;
     private String nic;
     private String designation;
-    private ContactDetails contactDetails;
 
-    public EmployeeDTO(String name, String NIC, String designation, ContactDetails contactDetails) {
+    private ContactDTO contactDTO;
+
+    public EmployeeDTO(String name, String nic, String designation, ContactDTO contactDTO) {
         this.name = name;
-        this.nic = NIC;
+        this.nic = nic;
         this.designation = designation;
-        this.contactDetails = contactDetails;
+        this.contactDTO = contactDTO;
     }
-
-    public EmployeeDTO(){}
 
     public String getName() {
         return name;
@@ -41,18 +40,18 @@ public class EmployeeDTO extends BaseDTO{
         this.designation = designation;
     }
 
-    public ContactDetails getContactDetails() {
-        return contactDetails;
+    public ContactDTO getContactDTO() {
+        return contactDTO;
     }
 
-    public void setContactDetails(ContactDetails contactDetails) {
-        this.contactDetails = contactDetails;
+    public void setContactDTO(ContactDTO contactDTO) {
+        this.contactDTO = contactDTO;
     }
 
     @Override
     public boolean isRequiredAvailable() {
         boolean isAllItemsAvailable= ((name !=null && !name.isEmpty())&& (nic !=null && !nic.isEmpty())&&
-                (designation !=null && !designation.isEmpty())&&(contactDetails !=null ) );
+                (designation !=null && !designation.isEmpty())&&(contactDTO !=null ) );
 
         return isAllItemsAvailable;
     }

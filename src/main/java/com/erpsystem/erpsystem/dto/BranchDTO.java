@@ -1,7 +1,7 @@
 package com.erpsystem.erpsystem.dto;
 
 
-import com.erpsystem.erpsystem.entity.Contact.ContactDetails;
+
 import com.erpsystem.erpsystem.entity.Warehouse;
 
 import java.util.Set;
@@ -9,18 +9,16 @@ import java.util.Set;
 
 public class BranchDTO extends BaseDTO{
     private String branchName;
-    private ContactDetails contactDetails;
+    private ContactDTO contactDTO;
 
     private Set<Warehouse> warehouseSet;
 
 
-    public BranchDTO(String branchName, ContactDetails contactDetails,Set<Warehouse> warehouseSet) {
+    public BranchDTO(String branchName, ContactDTO contactDTO, Set<Warehouse> warehouseSet) {
         this.branchName = branchName;
-        this.contactDetails = contactDetails;
-        this.warehouseSet=warehouseSet;
+        this.contactDTO = contactDTO;
+        this.warehouseSet = warehouseSet;
     }
-
-    public BranchDTO(){}
 
     public String getBranchName() {
         return branchName;
@@ -30,12 +28,12 @@ public class BranchDTO extends BaseDTO{
         this.branchName = branchName;
     }
 
-    public ContactDetails getContactDetails() {
-        return contactDetails;
+    public ContactDTO getContactDTO() {
+        return contactDTO;
     }
 
-    public void setContactDetails(ContactDetails contactDetails) {
-        this.contactDetails = contactDetails;
+    public void setContactDTO(ContactDTO contactDTO) {
+        this.contactDTO = contactDTO;
     }
 
     public Set<Warehouse> getWarehouseSet() {
@@ -48,7 +46,7 @@ public class BranchDTO extends BaseDTO{
 
     @Override
     public boolean isRequiredAvailable() {
-        boolean isAllItemsAvailable= ((branchName !=null && !branchName.isEmpty())&& (contactDetails !=null ));
+        boolean isAllItemsAvailable= ((branchName !=null && !branchName.isEmpty())&& (contactDTO !=null ));
 
         return isAllItemsAvailable;
 

@@ -1,5 +1,6 @@
 package com.erpsystem.erpsystem.entity.Contact;
 
+import com.erpsystem.erpsystem.dto.ContactDTO;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -16,7 +17,7 @@ public class ContactEntity implements Serializable {
     @JoinColumn(name = "id", referencedColumnName = "contact_detail_id")
     private ContactDetails contactDetails;
 
-    public ContactEntity(ContactDetails contactDetails) {
+    public ContactEntity(ContactDTO c) {
         this.contactDetails = contactDetails;
     }
 
