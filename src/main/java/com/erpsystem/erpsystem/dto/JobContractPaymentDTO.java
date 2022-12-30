@@ -1,20 +1,18 @@
 package com.erpsystem.erpsystem.dto;
 
-import com.fasterxml.jackson.databind.ser.Serializers;
-
 public class JobContractPaymentDTO extends BaseDTO {
 
     private int contractNum;
 
     private String paymentMonth;
     private double overTimeHours;
-    private double panelty;
+    private double penalty;
 
-    public JobContractPaymentDTO(int contractNum, String paymentMonth, double overTimeHours, double panelty) {
+    public JobContractPaymentDTO(int contractNum, String paymentMonth, double overTimeHours, double penalty) {
         this.contractNum = contractNum;
         this.paymentMonth = paymentMonth;
         this.overTimeHours = overTimeHours;
-        this.panelty = panelty;
+        this.penalty = penalty;
     }
 
     public JobContractPaymentDTO(){}
@@ -43,18 +41,18 @@ public class JobContractPaymentDTO extends BaseDTO {
         this.overTimeHours = overTimeHours;
     }
 
-    public double getPanelty() {
-        return panelty;
+    public double getPenalty() {
+        return penalty;
     }
 
-    public void setPanelty(double panelty) {
-        this.panelty = panelty;
+    public void setPenalty(double penalty) {
+        this.penalty = penalty;
     }
 
     @Override
     public boolean isRequiredAvailable() {
         boolean isAllItemsAvailable = ((contractNum > 0) && (paymentMonth != null && !paymentMonth.isEmpty()) &&
-                (overTimeHours > 0) && (panelty > 0));
+                (overTimeHours > 0) && (penalty > 0));
 
         return isAllItemsAvailable;
 

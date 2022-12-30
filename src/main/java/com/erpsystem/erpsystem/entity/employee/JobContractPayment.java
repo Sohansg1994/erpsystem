@@ -17,7 +17,7 @@ public class JobContractPayment {
     private double grossPay;
 
     @Column(nullable = true)
-    private double panelty;
+    private double penalty;
 
     @Column(nullable = true)
     private double netPay;
@@ -37,7 +37,7 @@ public class JobContractPayment {
 
     public JobContractPayment(JobContractPaymentDTO jobContractPaymentDTO) {
         this.paymentMonth = jobContractPaymentDTO.getPaymentMonth();
-        this.panelty =jobContractPaymentDTO.getPanelty();
+        this.penalty =jobContractPaymentDTO.getPenalty();
 
     }
     public JobContractPayment(){}
@@ -62,12 +62,12 @@ public class JobContractPayment {
         this.grossPay = grossPay;
     }
 
-    public double getPanelty() {
-        return panelty;
+    public double getPenalty() {
+        return penalty;
     }
 
-    public void setPanelty(double panelty) {
-        this.panelty = panelty;
+    public void setPenalty(double penalty) {
+        this.penalty = penalty;
     }
 
 

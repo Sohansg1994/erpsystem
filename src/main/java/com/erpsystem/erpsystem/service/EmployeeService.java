@@ -28,5 +28,15 @@ public class EmployeeService {
 
     }
 
+    public ResponseDTO getEmployeeCount(){
+        ResponseDTO responseDTO;
+        long employeeCount=employeeRepository.count();
+        System.out.println(employeeCount);
+
+        return responseDTO=new ResponseDTO("Success",employeeCount);
+
+    }
+
+
 
 }

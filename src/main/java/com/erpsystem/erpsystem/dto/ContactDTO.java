@@ -1,6 +1,8 @@
 package com.erpsystem.erpsystem.dto;
 
-public class ContactDTO {
+import com.erpsystem.erpsystem.entity.Contact.ContactDetails;
+
+public class ContactDTO extends BaseDTO {
 
     private String mobileNo;
 
@@ -19,6 +21,14 @@ public class ContactDTO {
         this.faxNo = faxNo;
         this.addressDTO = addressDTO;
     }
+    public ContactDTO(ContactDetails contactDetails , AddressDTO addressDTO) {
+        this.mobileNo =contactDetails.getMobileNo();
+        this.telephoneNo = contactDetails.getTelephoneNo();
+        this.email = contactDetails.getEmail();
+        this.faxNo = contactDetails.getFaxNo();
+        this.addressDTO = addressDTO;
+    }
+
 
     public String getMobileNo() {
         return mobileNo;
@@ -59,4 +69,13 @@ public class ContactDTO {
     public void setAddressDTO(AddressDTO addressDTO) {
         this.addressDTO = addressDTO;
     }
+
+    @Override
+    public boolean isRequiredAvailable(){
+        boolean isAllItemsAvailable= ((mobileNo !=null && !mobileNo.isEmpty())&& (telephoneNo !=null && !telephoneNo.isEmpty())&&
+                (email !=null && !email.isEmpty()) );
+
+        return isAllItemsAvailable;
+    }
+
 }

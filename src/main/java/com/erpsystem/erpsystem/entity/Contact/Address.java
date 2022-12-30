@@ -1,6 +1,7 @@
 package com.erpsystem.erpsystem.entity.Contact;
 
 
+import com.erpsystem.erpsystem.dto.AddressDTO;
 import jakarta.persistence.*;
 
 @Entity
@@ -31,12 +32,12 @@ public class Address {
 
 
 
-    public Address(String houseNo, String streetName, String city, String state, String zipCode) {
-        this.houseNo = houseNo;
-        this.streetName = streetName;
-        this.city = city;
-        this.state = state;
-        this.zipCode = zipCode;
+    public Address(AddressDTO addressDTO) {
+        this.houseNo = addressDTO.getHouseNo();
+        this.streetName = addressDTO.getStreetName();
+        this.city = addressDTO.getCity();
+        this.state = addressDTO.getState();
+        this.zipCode = addressDTO.getZipCode();
     }
 
     public Address(){}

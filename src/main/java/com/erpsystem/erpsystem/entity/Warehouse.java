@@ -20,7 +20,7 @@ public class Warehouse extends ContactEntity {
 
 
     public Warehouse(WarehouseDTO warehouseDTO) {
-        super(warehouseDTO.getContactDetails());
+        super(warehouseDTO.getContactDTO());
         this.warehouseName = warehouseDTO.getWarehouseName();
         this.capacity = warehouseDTO.getCapacity();
     }

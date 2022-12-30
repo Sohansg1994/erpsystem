@@ -51,7 +51,7 @@ public class EmployeeDTO extends BaseDTO{
     @Override
     public boolean isRequiredAvailable() {
         boolean isAllItemsAvailable= ((name !=null && !name.isEmpty())&& (nic !=null && !nic.isEmpty())&&
-                (designation !=null && !designation.isEmpty())&&(contactDTO !=null ) );
+                (designation !=null && !designation.isEmpty())&&(contactDTO.isRequiredAvailable()) );
 
         return isAllItemsAvailable;
     }

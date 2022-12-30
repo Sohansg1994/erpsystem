@@ -34,6 +34,49 @@ public class BranchController {
         }
     }
 
+    @GetMapping()
+    public ResponseEntity getBranch(@RequestParam int branchCode){
+        ResponseDTO responseDTO;
+        try {
+            responseDTO = branchService.getBranch(branchCode);
+            return new ResponseEntity(responseDTO, HttpStatus.ACCEPTED);
+        }catch (Exception e){
+            responseDTO=new ResponseDTO(e.getMessage(), null);
+            return new ResponseEntity(responseDTO,HttpStatus.NOT_ACCEPTABLE);
+        }
+
+    }
+
+    @GetMapping("/branchCount")
+    public ResponseEntity getBranchCount(){
+        ResponseDTO responseDTO;
+        try {
+            responseDTO = branchService.getBranchCount();
+            return new ResponseEntity(responseDTO, HttpStatus.ACCEPTED);
+        }catch (Exception e){
+            responseDTO=new ResponseDTO(e.getMessage(), null);
+            return new ResponseEntity(responseDTO,HttpStatus.NOT_ACCEPTABLE);
+        }
+
+    }
+    @GetMapping("/branchDetails")
+    public ResponseEntity getBranchDetails(){
+        ResponseDTO responseDTO;
+
+        try {
+            responseDTO = branchService.getBranchDetails();
+            return new ResponseEntity(responseDTO, HttpStatus.ACCEPTED);
+        }catch (Exception e){
+            responseDTO=new ResponseDTO(e.getMessage(), null);
+            return new ResponseEntity(responseDTO,HttpStatus.NOT_ACCEPTABLE);
+        }
+
+    }
+
+
+
+
+
 
 
 }

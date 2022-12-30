@@ -1,6 +1,8 @@
 package com.erpsystem.erpsystem.dto;
 
-public class AddressDTO {
+import com.erpsystem.erpsystem.entity.Contact.Address;
+
+public class AddressDTO extends BaseDTO{
 
     private String houseNo;
 
@@ -20,6 +22,15 @@ public class AddressDTO {
         this.state = state;
         this.zipCode = zipCode;
     }
+    public AddressDTO(Address address) {
+        this.houseNo = address.getHouseNo();
+        this.streetName = address.getStreetName();
+        this.city = address.getCity();
+        this.state = address.getState();
+        this.zipCode = address.getZipCode();
+    }
+
+
 
     public String getHouseNo() {
         return houseNo;
@@ -59,6 +70,14 @@ public class AddressDTO {
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
+    }
+
+    @Override
+    public boolean isRequiredAvailable() {
+        boolean isAllItemsAvailable= ((houseNo !=null && !houseNo.isEmpty())&& (streetName !=null && !streetName.isEmpty())&&
+                (city !=null && !city.isEmpty()) && (state !=null && !state.isEmpty())&&(zipCode !=null && !zipCode.isEmpty()) );
+
+        return isRequiredAvailable();
     }
 }
 

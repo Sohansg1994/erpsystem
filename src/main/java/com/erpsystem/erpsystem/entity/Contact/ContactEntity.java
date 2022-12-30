@@ -17,8 +17,9 @@ public class ContactEntity implements Serializable {
     @JoinColumn(name = "id", referencedColumnName = "contact_detail_id")
     private ContactDetails contactDetails;
 
-    public ContactEntity(ContactDTO c) {
-        this.contactDetails = contactDetails;
+    public ContactEntity(ContactDTO contactDTO) {
+
+        this.contactDetails = new ContactDetails(contactDTO);
     }
 
      protected ContactEntity(){}

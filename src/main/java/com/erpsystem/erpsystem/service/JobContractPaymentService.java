@@ -33,7 +33,7 @@ public class JobContractPaymentService {
                     + employeeJobContract.getFixedAllowances()
                     + jobContractPayment.getOtAmount());
             jobContractPayment.setNetPay(jobContractPayment.getGrossPay()
-                    - jobContractPayment.getPanelty()
+                    - jobContractPayment.getPenalty()
                     - employeeJobContract.getEpfDeduction());
 
             jobContractPaymentRepository.save(jobContractPayment);

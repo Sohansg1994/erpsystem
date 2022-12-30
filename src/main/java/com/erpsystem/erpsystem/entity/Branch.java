@@ -25,7 +25,7 @@ public class Branch extends ContactEntity{
   private Set<EmployeeJobContract> employeeJobContractSet;
 
     public Branch(BranchDTO branchDTO) {
-        super(branchDTO.getContactDetails());
+        super(branchDTO.getContactDTO());
         this.branchName = branchDTO.getBranchName();
         this.warehouseSet=branchDTO.getWarehouseSet();
     }
@@ -56,4 +56,7 @@ public class Branch extends ContactEntity{
     public void setEmployeeJobContractSet(Set<EmployeeJobContract> employeeJobContractSet) {
         this.employeeJobContractSet = employeeJobContractSet;
     }
+
+
+
 }

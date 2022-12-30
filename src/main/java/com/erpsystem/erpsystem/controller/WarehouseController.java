@@ -33,5 +33,19 @@ public class WarehouseController {
             return new ResponseEntity(responseDTO,HttpStatus.NOT_ACCEPTABLE);
         }
     }
+    @GetMapping("/warehouseCount")
+    public ResponseEntity getWarehouseCount(){
+        ResponseDTO responseDTO;
+        try {
+            responseDTO = warehouseService.getWarehouseCount();
+            return new ResponseEntity(responseDTO, HttpStatus.ACCEPTED);
+        }catch (Exception e){
+            responseDTO=new ResponseDTO(e.getMessage(), null);
+            return new ResponseEntity(responseDTO,HttpStatus.NOT_ACCEPTABLE);
+        }
+
+    }
+
+
 
 }

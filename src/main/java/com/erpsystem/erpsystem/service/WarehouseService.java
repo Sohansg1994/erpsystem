@@ -29,6 +29,16 @@ public class WarehouseService {
 
     }
 
+    public ResponseDTO getWarehouseCount(){
+        ResponseDTO responseDTO;
+        long warehouseCount=warehouseRepository.count();
+        System.out.println(warehouseCount);
+
+        return responseDTO=new ResponseDTO("Success",warehouseCount);
+
+    }
+
+
 
 
 

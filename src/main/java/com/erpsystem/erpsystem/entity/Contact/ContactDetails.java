@@ -1,5 +1,6 @@
 package com.erpsystem.erpsystem.entity.Contact;
 
+import com.erpsystem.erpsystem.dto.ContactDTO;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
@@ -36,11 +37,12 @@ public class ContactDetails {
 
 
 
-    public ContactDetails(String mobileNo, String telephoneNo, String email, String faxNo) {
-        this.mobileNo = mobileNo;
-        this.telephoneNo = telephoneNo;
-        this.email = email;
-        this.faxNo = faxNo;
+    public ContactDetails(ContactDTO contactDTO) {
+        this.mobileNo =contactDTO.getMobileNo();
+        this.telephoneNo = contactDTO.getTelephoneNo();
+        this.email = contactDTO.getEmail();
+        this.faxNo = contactDTO.getFaxNo();
+        this.address=new Address(contactDTO.getAddressDTO());
     }
 
     public ContactDetails(){}

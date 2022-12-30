@@ -26,7 +26,7 @@ public class Employee extends ContactEntity {
     private Set<EmployeeJobContract> employeeJobContractSet;
 
     public Employee(EmployeeDTO employeeDTO) {
-        super(employeeDTO.getContactDetails());
+        super(employeeDTO.getContactDTO());
         this.name = employeeDTO.getName();
         this.nic = employeeDTO.getNic();
         this.designation = employeeDTO.getDesignation();

@@ -34,6 +34,19 @@ public class EmployeeController {
 
     }
 
+    @GetMapping("/employeeCount")
+    public ResponseEntity getEmployeeCount(){
+        ResponseDTO responseDTO;
+        try {
+            responseDTO = employeeService.getEmployeeCount();
+            return new ResponseEntity(responseDTO, HttpStatus.ACCEPTED);
+        }catch (Exception e){
+            responseDTO=new ResponseDTO(e.getMessage(), null);
+            return new ResponseEntity(responseDTO,HttpStatus.NOT_ACCEPTABLE);
+        }
+
+    }
+
 
 
 }
